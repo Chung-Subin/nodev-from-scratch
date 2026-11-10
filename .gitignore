@@ -1,0 +1,60 @@
+# ========================================
+# Nodev 项目 .gitignore
+# 目的：只传源码和文档，不传大文件/产物/IDE 配置
+# ========================================
+
+# ---------- Python 缓存 ----------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------- 虚拟环境 ----------
+.venv/
+venv/
+env/
+ENV/
+
+# ---------- IDE / 编辑器 ----------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ---------- 大文件：模型权重（GitHub 单文件限制 100MB）----------
+# VGG16 预训练权重 513MB，太大不传，README 里写下载地址
+models/vgg16.npz
+# 训练产出的权重文件（.npz 是 nodev 的权重格式，.pth 是 PyTorch 的）
+*.pth
+*.pt
+*.npz
+!models/labels
+# models/labels 是 ImageNet 文本标签列表（31KB），保留
+
+# ---------- 数据集（MNIST 原始文件 55MB，公开数据集不该进 git）----------
+# README 里写明下载方式即可
+data/*.gz
+data/*.idx*-ubyte
+data/*.npy
+
+# ---------- 日志与临时文件 ----------
+*.log
+logs/
+*.tmp
+*.bak
+*.swp
+
+# ---------- 压缩包 & 附件 ----------
+nodev附件.zip
+nodev附件/
+
+# ---------- 操作系统垃圾 ----------
+Thumbs.db
+Desktop.ini
+.DS_Store
+ehthumbs.db
